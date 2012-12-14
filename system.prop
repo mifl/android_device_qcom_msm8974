@@ -18,6 +18,8 @@ DEVICE_PROVISIONED=1
 # Start in cdma mode
 ro.telephony.default_network=5
 
+persist.actionsafe.maxwidth=10
+persist.actionsafe.maxheight=10
 debug.sf.hw=1
 debug.egl.hw=1
 debug.composition.type=gpu
