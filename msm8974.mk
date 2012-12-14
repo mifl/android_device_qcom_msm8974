@@ -9,3 +9,10 @@ PRODUCT_COPY_FILES += \
 
 #fstab.qcom
 PRODUCT_PACKAGES += fstab.qcom
+
+#ANT stack
+PRODUCT_PACKAGES += \
+        AntHalService \
+        libantradio \
+        ANTRadioService \
+        antradio_app
