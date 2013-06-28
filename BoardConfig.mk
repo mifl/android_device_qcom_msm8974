@@ -88,4 +88,4 @@ TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
 TARGET_USES_QCOM_BSP := true
 
-TARGET_ADDITIONAL_BOOTCLASSPATH := qcmediaplayer:WfdCommon:oem-services
+TARGET_ADDITIONAL_BOOTCLASSPATH := qcmediaplayer:WfdCommon:oem-services:qcom.fmradio
