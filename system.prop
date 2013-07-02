@@ -37,7 +37,7 @@ qcom.hw.aac.encoder=true
 #
 # system props for the cne module
 #
-persist.cne.feature=1
+#persist.cne.feature=1
 
 #system props for the MM modules
 

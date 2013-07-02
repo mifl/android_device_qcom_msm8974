@@ -87,5 +87,7 @@ TARGET_KRAIT_BIONIC_PLDSIZE := 64
 TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
 
+TARGET_USES_QCOM_BSP := false
+
 TARGET_ADDITIONAL_BOOTCLASSPATH := qcmediaplayer:WfdCommon:oem-services:qcom.fmradio
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
