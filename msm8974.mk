@@ -1,7 +1,8 @@
 # media_profiles and media_codecs xmls for 8974
+ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
 PRODUCT_COPY_FILES += device/qcom/msm8974/media/media_profiles_8974.xml:system/etc/media_profiles.xml \
                       device/qcom/msm8974/media/media_codecs_8974.xml:system/etc/media_codecs.xml
-
+endif  #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 $(call inherit-product, device/qcom/common/common.mk)
 
 PRODUCT_NAME := msm8974
@@ -29,6 +30,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml
+
+#battery_monitor
+PRODUCT_PACKAGES += \
+    battery_monitor \
+    battery_shutdown
 
 #fstab.qcom
 PRODUCT_PACKAGES += fstab.qcom
