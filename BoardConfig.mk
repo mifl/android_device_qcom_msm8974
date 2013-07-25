@@ -86,6 +86,5 @@ TARGET_KRAIT_BIONIC_PLDSIZE := 64
 
 TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
-TARGET_USES_QCOM_BSP := true
 
 TARGET_ADDITIONAL_BOOTCLASSPATH := qcmediaplayer:WfdCommon:oem-services:qcom.fmradio
