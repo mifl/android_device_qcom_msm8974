@@ -50,6 +50,9 @@ media.stagefright.enable-scan=true
 mmp.enable.3g2=true
 media.aac_51_output_enabled=true
 
+# VIDC: debug_levels
+# 1:ERROR 2:HIGH 4:LOW 0:NOLOGS 7:AllLOGS
+vidc.debug.level=1
 #
 # system props for the data modules
 #
