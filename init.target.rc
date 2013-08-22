@@ -32,7 +32,7 @@ on early-init
     symlink /data/tombstones /tombstones
 
 on init
-    export BOOTCLASSPATH ${BOOTCLASSPATH}:/system/framework/oem-services.jar
+    export BOOTCLASSPATH ${BOOTCLASSPATH}:/system/framework/oem-services.jar:/system/framework/WfdCommon.jar
 
 # import cne init file
 on post-fs
@@ -105,7 +105,7 @@ service qseecomd /system/bin/qseecomd
    user root
    group root
 
-service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
+service mpdecision /system/bin/mpdecision --avg_comp
    user root
    disabled
 
