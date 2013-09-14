@@ -1937,6 +1937,70 @@ SectionVerb
 	PlaybackPCM 9
 
 EndSection
+
+SectionVerb
+	Name "HiFi Rec CompressedBT SCO Tx"
+
+	EnableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:1
+	EndSequence
+
+	DisableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:0
+	EndSequence
+
+	# ALSA PCMs
+	CapturePCM 9
+
+EndSection
+
+SectionVerb
+	Name "HiFi Rec CompressedBT SCO WB Tx"
+
+	EnableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:1
+	EndSequence
+
+	DisableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:0
+	EndSequence
+
+	# ALSA PCMs
+	CapturePCM 9
+
+EndSection
+
+SectionVerb
+        Name "HiFi Rec CompressedPROXY Tx"
+
+        EnableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:1
+        EndSequence
+
+        DisableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:0
+        EndSequence
+
+        # ALSA PCMs
+        CapturePCM 9
+
+EndSection
+
+SectionVerb
+        Name "HiFi Rec CompressedUSB PROXY Tx"
+
+        EnableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:1
+        EndSequence
+
+        DisableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:0
+        EndSequence
+
+        # ALSA PCMs
+        CapturePCM 9
+
+EndSection
 }
 SectionUseCase."Voice2" {
 Comment "Voice2 use case"
@@ -11873,6 +11937,70 @@ SectionModifier
 	# ALSA PCMs
 	PlaybackPCM 20
 	CapturePCM 20
+
+EndSection
+
+SectionModifier
+	Name "Capture Music CompressedBT SCO Tx"
+
+	EnableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:1
+	EndSequence
+
+	DisableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:0
+	EndSequence
+
+	# ALSA PCMs
+	CapturePCM 9
+
+EndSection
+
+SectionModifier
+	Name "Capture Music CompressedBT SCO WB Tx"
+
+	EnableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:1
+	EndSequence
+
+	DisableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:0
+	EndSequence
+
+	# ALSA PCMs
+	CapturePCM 9
+
+EndSection
+
+SectionModifier
+        Name "Capture Music CompressedPROXY Tx"
+
+        EnableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:1
+        EndSequence
+
+        DisableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:0
+        EndSequence
+
+        # ALSA PCMs
+        CapturePCM 9
+
+EndSection
+
+SectionModifier
+        Name "Capture Music CompressedUSB PROXY Tx"
+
+        EnableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:1
+        EndSequence
+
+        DisableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:0
+        EndSequence
+
+        # ALSA PCMs
+        CapturePCM 9
 
 EndSection
 # End of master file
