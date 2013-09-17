@@ -5213,6 +5213,100 @@ SectionVerb
 EndSection
 }
 
+SectionUseCase."QCHAT" {
+Comment "QCHAT use case"
+SectionVerb
+	Name "QCHAT"
+
+	EnableSequence
+		'SLIM_0_RX_Voice Mixer QCHAT':1:1
+		'QCHAT_Tx Mixer SLIM_0_TX_QCHAT':1:1
+	EndSequence
+
+	DisableSequence
+		'SLIM_0_RX_Voice Mixer QCHAT':1:0
+		'QCHAT_Tx Mixer SLIM_0_TX_QCHAT':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 20
+	capturePCM 20
+
+EndSection
+
+SectionVerb
+	Name "QCHATBT SCO Rx"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+                'Internal BTSCO SampleRate':1:8000
+		'INTERNAL_BT_SCO_RX_Voice Mixer QCHAT':1:0
+		'QCHAT_Tx Mixer INTERNAL_BT_SCO_TX_QCHAT':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 20
+	capturePCM 20
+
+EndSection
+
+SectionVerb
+	Name "QCHATBT SCO Tx"
+
+	EnableSequence
+                'Internal BTSCO SampleRate':1:8000
+		'INTERNAL_BT_SCO_RX_Voice Mixer QCHAT':1:1
+		'QCHAT_Tx Mixer INTERNAL_BT_SCO_TX_QCHAT':1:1
+	EndSequence
+
+	DisableSequence
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 20
+	capturePCM 20
+
+EndSection
+
+SectionVerb
+	Name "QCHATBT SCO WB Rx"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+                'Internal BTSCO SampleRate':1:8000
+		'INTERNAL_BT_SCO_RX_Voice Mixer QCHAT':1:0
+		'QCHAT_Tx Mixer INTERNAL_BT_SCO_TX_QCHAT':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 20
+	capturePCM 20
+
+EndSection
+
+SectionVerb
+	Name "QCHATBT SCO WB Tx"
+
+	EnableSequence
+                'Internal BTSCO SampleRate':1:16000
+		'INTERNAL_BT_SCO_RX_Voice Mixer QCHAT':1:1
+		'QCHAT_Tx Mixer INTERNAL_BT_SCO_TX_QCHAT':1:1
+	EndSequence
+
+	DisableSequence
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 20
+	capturePCM 20
+
+EndSection
+}
+
 SectionDevice
 	Name "Earpiece"
 	Comment "Handset Rx device"
@@ -5574,16 +5668,16 @@ SectionDevice
 		'CLASS_H_DSM MUX':0:DSM_HPHL_RX1
 		'HPHL DAC Switch':1:1
 		'HPHR DAC Switch':1:1
-		'HPHL Volume':1:70
-		'HPHR Volume':1:70
+		'HPHL Volume':1:90
+		'HPHR Volume':1:90
 		'RX1 Digital Volume':1:65
 		'RX2 Digital Volume':1:65
 		'ANC Slot':1:0
 		'ANC1 FB MUX':0:EAR_HPH_L
 		'ANC1 MUX':0:ADC3
 		'ANC2 MUX':0:ADC4
-		'ADC3 Volume':1:85
-		'ADC4 Volume':1:85
+		'ADC3 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -5633,16 +5727,16 @@ SectionDevice
 		'CLASS_H_DSM MUX':0:DSM_HPHL_RX1
 		'HPHL DAC Switch':1:1
 		'HPHR DAC Switch':1:1
-		'HPHL Volume':1:70
-		'HPHR Volume':1:70
+		'HPHL Volume':1:90
+		'HPHR Volume':1:90
 		'RX1 Digital Volume':1:65
 		'RX2 Digital Volume':1:65
 		'ANC Slot':1:0
 		'ANC1 FB MUX':0:EAR_HPH_L
 		'ANC1 MUX':0:ADC3
 		'ANC2 MUX':0:ADC4
-		'ADC3 Volume':1:85
-		'ADC4 Volume':1:85
+		'ADC3 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -5697,16 +5791,16 @@ SectionDevice
 		'CLASS_H_DSM MUX':0:DSM_HPHL_RX1
 		'HPHL DAC Switch':1:1
 		'HPHR DAC Switch':1:1
-		'HPHL Volume':1:70
-		'HPHR Volume':1:70
+		'HPHL Volume':1:90
+		'HPHR Volume':1:90
 		'RX1 Digital Volume':1:65
 		'RX2 Digital Volume':1:65
 		'ANC Slot':1:0
 		'ANC1 FB MUX':0:EAR_HPH_L
 		'ANC1 MUX':0:ADC3
 		'ANC2 MUX':0:ADC4
-		'ADC3 Volume':1:85
-		'ADC4 Volume':1:85
+		'ADC3 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -6675,16 +6769,16 @@ SectionDevice
 		'CLASS_H_DSM MUX':0:DSM_HPHL_RX1
 		'HPHL DAC Switch':1:1
 		'HPHR DAC Switch':1:1
-		'HPHL Volume':1:70
-		'HPHR Volume':1:70
+		'HPHL Volume':1:90
+		'HPHR Volume':1:90
 		'RX1 Digital Volume':1:65
 		'RX2 Digital Volume':1:65
 		'ANC Slot':1:0
 		'ANC1 FB MUX':0:EAR_HPH_L
 		'ANC1 MUX':0:ADC3
 		'ANC2 MUX':0:ADC4
-		'ADC3 Volume':1:85
-		'ADC4 Volume':1:85
+		'ADC3 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -6787,16 +6881,16 @@ SectionDevice
 		'CLASS_H_DSM MUX':0:DSM_HPHL_RX1
 		'HPHL DAC Switch':1:1
 		'HPHR DAC Switch':1:1
-		'HPHL Volume':1:70
-		'HPHR Volume':1:70
+		'HPHL Volume':1:90
+		'HPHR Volume':1:90
 		'RX1 Digital Volume':1:65
 		'RX2 Digital Volume':1:65
 		'ANC Slot':1:0
 		'ANC1 FB MUX':0:EAR_HPH_L
 		'ANC1 MUX':0:ADC3
 		'ANC2 MUX':0:ADC4
-		'ADC3 Volume':1:85
-		'ADC4 Volume':1:85
+		'ADC3 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -6845,8 +6939,8 @@ SectionDevice
 		'DEC9 MUX':0:DMIC4
 		'SLIM TX8 MUX':0:DEC10
 		'DEC10 MUX':0:DMIC3
-		'SLIM TX9 MUX':0:DEC7
-		'DEC7 MUX':0:DMIC1
+		'SLIM TX9 MUX':0:DEC8
+		'DEC8 MUX':0:DMIC2
 		'SLIM TX10 MUX':0:DEC6
 		'DEC6 MUX':0:DMIC6
 	EndSequence
@@ -6861,7 +6955,7 @@ SectionDevice
 		'SLIM TX8 MUX':0:ZERO
 		'DEC10 MUX':0:ZERO
 		'SLIM TX9 MUX':0:ZERO
-		'DEC7 MUX':0:ZERO
+		'DEC8 MUX':0:ZERO
 		'SLIM TX10 MUX':0:ZERO
 		'DEC6 MUX':0:ZERO
 	EndSequence
@@ -7048,16 +7142,16 @@ SectionDevice
 		'CLASS_H_DSM MUX':0:DSM_HPHL_RX1
 		'HPHL DAC Switch':1:1
 		'HPHR DAC Switch':1:1
-		'HPHL Volume':1:70
-		'HPHR Volume':1:70
+		'HPHL Volume':1:90
+		'HPHR Volume':1:90
 		'RX1 Digital Volume':1:65
 		'RX2 Digital Volume':1:65
 		'ANC Slot':1:0
 		'ANC1 FB MUX':0:EAR_HPH_L
 		'ANC1 MUX':0:ADC3
 		'ANC2 MUX':0:ADC4
-		'ADC3 Volume':1:85
-		'ADC4 Volume':1:85
+		'ADC3 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -7106,16 +7200,16 @@ SectionDevice
 		'CLASS_H_DSM MUX':0:DSM_HPHL_RX1
 		'HPHL DAC Switch':1:1
 		'HPHR DAC Switch':1:1
-		'HPHL Volume':1:70
-		'HPHR Volume':1:70
+		'HPHL Volume':1:90
+		'HPHR Volume':1:90
 		'RX1 Digital Volume':1:65
 		'RX2 Digital Volume':1:65
 		'ANC Slot':1:0
 		'ANC1 FB MUX':0:EAR_HPH_L
 		'ANC1 MUX':0:ADC3
 		'ANC2 MUX':0:ADC4
-		'ADC3 Volume':1:85
-		'ADC4 Volume':1:85
+		'ADC3 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -11750,6 +11844,97 @@ SectionModifier
 
         # ALSA PCMs
         CapturePCM 16
+
+EndSection
+
+SectionModifier
+	Name "Play QCHAT"
+
+	EnableSequence
+		'SLIM_0_RX_Voice Mixer QCHAT':1:1
+		'QCHAT_Tx Mixer SLIM_0_TX_QCHAT':1:1
+	EndSequence
+
+	DisableSequence
+		'SLIM_0_RX_Voice Mixer QCHAT':1:0
+		'QCHAT_Tx Mixer SLIM_0_TX_QCHAT':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 20
+	capturePCM 20
+
+EndSection
+
+SectionModifier
+	Name "Play QCHATBT SCO Rx"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+		'Internal BTSCO SampleRate':1:8000
+		'INTERNAL_BT_SCO_RX_Voice Mixer QCHAT':1:0
+		'QCHAT_Tx Mixer INTERNAL_BT_SCO_TX_QCHAT':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 20
+	CapturePCM 20
+
+EndSection
+
+SectionModifier
+	Name "Play QCHATBT SCO Tx"
+
+	EnableSequence
+		'Internal BTSCO SampleRate':1:8000
+		'INTERNAL_BT_SCO_RX_Voice Mixer QCHAT':1:1
+		'QCHAT_Tx Mixer INTERNAL_BT_SCO_TX_QCHAT':1:1
+	EndSequence
+
+	DisableSequence
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 20
+	CapturePCM 20
+
+EndSection
+
+SectionModifier
+	Name "Play QCHATBT SCO WB Rx"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+		'Internal BTSCO SampleRate':1:8000
+		'INTERNAL_BT_SCO_RX_Voice Mixer QCHAT':1:0
+		'QCHAT_Tx Mixer INTERNAL_BT_SCO_TX_QCHAT':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 20
+	CapturePCM 20
+
+EndSection
+
+SectionModifier
+	Name "Play QCHATBT SCO WB Tx"
+
+	EnableSequence
+		'Internal BTSCO SampleRate':1:16000
+		'INTERNAL_BT_SCO_RX_Voice Mixer QCHAT':1:1
+		'QCHAT_Tx Mixer INTERNAL_BT_SCO_TX_QCHAT':1:1
+	EndSequence
+
+	DisableSequence
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 20
+	CapturePCM 20
 
 EndSection
 
