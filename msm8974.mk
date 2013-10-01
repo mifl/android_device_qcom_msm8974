@@ -29,6 +29,7 @@ PRODUCT_COPY_FILES += device/qcom/msm8974/snd_soc_msm/snd_soc_msm_Taiko:system/e
                       device/qcom/msm8974/snd_soc_msm/snd_soc_msm_Taiko_liquid_auxpcm:system/etc/snd_soc_msm/snd_soc_msm_Taiko_liquid_auxpcm \
                       device/qcom/msm8974/snd_soc_msm/snd_soc_apq_Taiko_DB:system/etc/snd_soc_msm/snd_soc_apq_Taiko_DB \
                       device/qcom/msm8974/snd_soc_msm/snd_soc_msm_samarium_Tapan:system/etc/snd_soc_msm/snd_soc_msm_samarium_Tapan \
+                      device/qcom/msm8974/snd_soc_msm/snd_soc_msm_samarium_Tapan_MTP:system/etc/snd_soc_msm/snd_soc_msm_samarium_Tapan_MTP \
 
 
 # Feature definition files for 8974
