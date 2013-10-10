@@ -31,6 +31,7 @@
 dir0=/data/usf
 h_dir=$dir0/hovering
 g_dir=$dir0/gesture
+sg_dir=$dir0/sync_gesture
 t_dir=$dir0/tester
 e_dir=$dir0/epos
 p2p_dir=$dir0/p2p
@@ -65,6 +66,7 @@ if [ ! -e $trigger_file ]; then
    ln -s $h_dir/cfg_"$type" $h_dir/cfg
    ln -s $p2p_dir/cfg_"$type" $p2p_dir/cfg
    ln -s $g_dir/cfg_"$type" $g_dir/cfg
+   ln -s $sg_dir/cfg_"$type" $sg_dir/cfg
    ln -s $prox_dir/cfg_"$type" $prox_dir/cfg
 
    ln -s $e_dir/cfg/usf_epos_"$type".cfg $e_dir/usf_epos.cfg
@@ -72,6 +74,7 @@ if [ ! -e $trigger_file ]; then
    ln -s $h_dir/cfg/usf_hovering_"$type".cfg $h_dir/usf_hovering.cfg
    ln -s $p2p_dir/cfg/usf_p2p_"$type".cfg $p2p_dir/usf_p2p.cfg
    ln -s $g_dir/cfg/usf_gesture_"$type".cfg $g_dir/usf_gesture.cfg
+   ln -s $sg_dir/cfg/usf_sync_gesture_"$type".cfg $sg_dir/usf_sync_gesture.cfg
    ln -s $prox_dir/cfg/usf_proximity_"$type".cfg $prox_dir/usf_proximity.cfg
 
    rm /system/etc/snd_soc_msm/us_soc_msm
