@@ -1888,6 +1888,70 @@ SectionVerb
 	PlaybackPCM 9
 
 EndSection
+
+SectionVerb
+	Name "HiFi Rec CompressedBT SCO Tx"
+
+	EnableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:1
+	EndSequence
+
+	DisableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:0
+	EndSequence
+
+	# ALSA PCMs
+	CapturePCM 9
+
+EndSection
+
+SectionVerb
+	Name "HiFi Rec CompressedBT SCO WB Tx"
+
+	EnableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:1
+	EndSequence
+
+	DisableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:0
+	EndSequence
+
+	# ALSA PCMs
+	CapturePCM 9
+
+EndSection
+
+SectionVerb
+        Name "HiFi Rec CompressedPROXY Tx"
+
+        EnableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:1
+        EndSequence
+
+        DisableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:0
+        EndSequence
+
+        # ALSA PCMs
+        CapturePCM 9
+
+EndSection
+
+SectionVerb
+        Name "HiFi Rec CompressedUSB PROXY Tx"
+
+        EnableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:1
+        EndSequence
+
+        DisableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:0
+        EndSequence
+
+        # ALSA PCMs
+        CapturePCM 9
+
+EndSection
 }
 SectionUseCase."Voice2" {
 Comment "Voice2 use case"
@@ -4494,8 +4558,10 @@ SectionDevice
 		'RX1 MIX1 INP1':0:RX1
 		'CLASS_H_DSM MUX':0:RX_HPHL
 		'DAC1 Switch':1:1
+		'RX1 Digital Volume':1:65
                 'ANC Slot':1:6
                 'ANC1 MUX':0:DMIC1
+		'ANC1 FB MUX':0:EAR_HPH_L
 	EndSequence
 
 	DisableSequence
@@ -4505,9 +4571,12 @@ SectionDevice
 		'DAC1 Switch':1:0
                 'ANC Slot':1:0
                 'ANC1 MUX':0:ZERO
+		'ANC1 FB MUX':0:ZERO
+		'RX1 Digital Volume':1:0
+		'ANC Function':0:OFF
 	EndSequence
 
-	ACDBID	30:1
+	ACDBID	103:1
 	EffectsMixerCTL "SRS TruMedia"
 	EC_REF_RXMixerCTL "SLIM_RX"
 
@@ -4691,16 +4760,16 @@ SectionDevice
 		'RX2 MIX1 INP1':0:RX2
 		'CLASS_H_DSM MUX':0:RX_HPHL
 		'HPHL DAC Switch':1:1
-		'HPHL Volume':1:100
-		'HPHR Volume':1:100
+		'HPHL Volume':1:60
+		'HPHR Volume':1:60
 		'RX1 Digital Volume':1:68
 		'RX2 Digital Volume':1:68
 		'ANC Slot':1:0
 		'ANC1 FB MUX':0:EAR_HPH_L
-		'ANC1 MUX':0:ADC4
-		'ANC2 MUX':0:ADC5
-		'ADC5 Volume':1:65
-		'ADC4 Volume':1:65
+		'ANC1 MUX':0:ADC5
+		'ANC2 MUX':0:ADC4
+		'ADC5 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -4736,16 +4805,16 @@ SectionDevice
 		'RX2 MIX1 INP1':0:RX2
 		'CLASS_H_DSM MUX':0:RX_HPHL
 		'HPHL DAC Switch':1:1
-		'HPHL Volume':1:100
-		'HPHR Volume':1:100
+		'HPHL Volume':1:60
+		'HPHR Volume':1:60
 		'RX1 Digital Volume':1:68
 		'RX2 Digital Volume':1:68
 		'ANC Slot':1:1
 		'ANC1 FB MUX':0:EAR_HPH_L
-		'ANC1 MUX':0:ADC4
-		'ANC2 MUX':0:ADC5
-		'ADC5 Volume':1:65
-		'ADC4 Volume':1:65
+		'ANC1 MUX':0:ADC5
+		'ANC2 MUX':0:ADC4
+		'ADC5 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -4780,15 +4849,15 @@ SectionDevice
 		'AIF1_CAP Mixer SLIM TX2':1:1
 		'AIF1_CAP Mixer SLIM TX3':1:1
 		'AIF1_CAP Mixer SLIM TX4':1:1
-		'SLIM TX1 MUX':0:DEC1
-		'DEC1 MUX':0:DMIC1
-		'DEC1 Volume':1:68
-		'SLIM TX2 MUX':0:DEC2
-		'DEC2 MUX':0:DMIC2
-		'DEC2 Volume':1:68
-		'SLIM TX3 MUX':0:DEC3
+		'SLIM TX1 MUX':0:DEC3
 		'DEC3 MUX':0:DMIC3
 		'DEC3 Volume':1:68
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'DEC1 Volume':1:68
+		'SLIM TX3 MUX':0:DEC2
+		'DEC2 MUX':0:DMIC1
+		'DEC2 Volume':1:68
 		'SLIM TX4 MUX':0:DEC4
 		'DEC4 MUX':0:DMIC4
 		'DEC4 Volume':1:68
@@ -4800,16 +4869,54 @@ SectionDevice
 		'AIF1_CAP Mixer SLIM TX3':1:0
 		'AIF1_CAP Mixer SLIM TX4':1:0
 		'SLIM TX1 MUX':0:ZERO
-		'DEC1 MUX':0:ZERO
-		'SLIM TX2 MUX':0:ZERO
-		'DEC2 MUX':0:ZERO
-		'SLIM TX3 MUX':0:ZERO
 		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'SLIM TX3 MUX':0:ZERO
+		'DEC2 MUX':0:ZERO
 		'SLIM TX4 MUX':0:ZERO
 		'DEC4 MUX':0:ZERO
 	EndSequence
 
 	ACDBID  46:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "AANC DMIC Endfire"
+	Comment "Dual MIC Endfire Tx device for AANC"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'AIF1_CAP Mixer SLIM TX3':1:1
+		'SLIM_0_RX AANC MUX':0:SLIMBUS_0_TX
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM TX3 MUX':0:DEC2
+		'DEC2 MUX':0:DMIC1
+		'SLIM_0_TX Channels':0:Three
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'AIF1_CAP Mixer SLIM TX3':1:0
+		'SLIM_0_RX AANC MUX':0:ZERO
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'SLIM TX3 MUX':0:ZERO
+		'DEC2 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID  105:2
 	EffectsMixerCTL "SRS TruMedia"
 
 EndSection
@@ -4889,15 +4996,15 @@ SectionDevice
 		'AIF1_CAP Mixer SLIM TX3':1:1
 		'AIF1_CAP Mixer SLIM TX4':1:1
                 'SLIM_0_TX Channels':0:Four
-                'SLIM TX1 MUX':0:DEC1
-                'DEC1 MUX':0:DMIC1
-		'DEC1 Volume':1:68
-                'SLIM TX2 MUX':0:DEC2
-                'DEC2 MUX':0:DMIC2
-		'DEC2 Volume':1:68
-                'SLIM TX3 MUX':0:DEC3
+                'SLIM TX1 MUX':0:DEC3
                 'DEC3 MUX':0:DMIC3
 		'DEC3 Volume':1:68
+                'SLIM TX2 MUX':0:DEC1
+                'DEC1 MUX':0:DMIC2
+		'DEC1 Volume':1:68
+                'SLIM TX3 MUX':0:DEC2
+                'DEC2 MUX':0:DMIC1
+		'DEC2 Volume':1:68
                 'SLIM TX4 MUX':0:DEC4
                 'DEC4 MUX':0:DMIC4
 		'DEC4 Volume':1:68
@@ -4909,11 +5016,11 @@ SectionDevice
 		'AIF1_CAP Mixer SLIM TX3':1:0
 		'AIF1_CAP Mixer SLIM TX4':1:0
                 'SLIM TX1 MUX':0:ZERO
-                'DEC1 MUX':0:ZERO
-                'SLIM TX2 MUX':0:ZERO
-                'DEC2 MUX':0:ZERO
-                'SLIM TX3 MUX':0:ZERO
                 'DEC3 MUX':0:ZERO
+                'SLIM TX2 MUX':0:ZERO
+                'DEC1 MUX':0:ZERO
+                'SLIM TX3 MUX':0:ZERO
+                'DEC2 MUX':0:ZERO
                 'SLIM TX4 MUX':0:ZERO
                 'DEC4 MUX':0:ZERO
         EndSequence
@@ -4979,16 +5086,16 @@ SectionDevice
 		'RX2 MIX2 INP1':0:IIR1
 		'CLASS_H_DSM MUX':0:RX_HPHL
 		'HPHL DAC Switch':1:1
-		'HPHL Volume':1:100
-		'HPHR Volume':1:100
+		'HPHL Volume':1:60
+		'HPHR Volume':1:60
 		'RX1 Digital Volume':1:68
 		'RX2 Digital Volume':1:68
 		'ANC Slot':1:0
-		'ANC1 MUX':0:ADC4
-		'ANC2 MUX':0:ADC5
+		'ANC1 MUX':0:ADC5
+		'ANC2 MUX':0:ADC4
 		'ANC1 FB MUX':0:EAR_HPH_L
-		'ADC5 Volume':1:65
-		'ADC4 Volume':1:65
+		'ADC5 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -5049,16 +5156,16 @@ SectionDevice
 		'RX2 MIX2 INP1':0:IIR1
 		'CLASS_H_DSM MUX':0:RX_HPHL
 		'HPHL DAC Switch':1:1
-		'HPHL Volume':1:100
-		'HPHR Volume':1:100
+		'HPHL Volume':1:60
+		'HPHR Volume':1:60
 		'RX1 Digital Volume':1:68
 		'RX2 Digital Volume':1:68
 		'ANC Slot':1:1
-		'ANC1 MUX':0:ADC4
-		'ANC2 MUX':0:ADC5
+		'ANC1 MUX':0:ADC5
+		'ANC2 MUX':0:ADC4
 		'ANC1 FB MUX':0:EAR_HPH_L
-		'ADC5 Volume':1:65
-		'ADC4 Volume':1:65
+		'ADC5 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -5191,6 +5298,44 @@ SectionDevice
 	EndSequence
 
 	ACDBID  36:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "AANC Line"
+	Comment "Speaker Tx device for AANC"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'AIF1_CAP Mixer SLIM TX3':1:1
+		'SLIM_0_TX Channels':0:Three
+		'SLIM_0_RX AANC MUX':0:SLIMBUS_0_TX
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM TX3 MUX':0:DEC2
+		'DEC2 MUX':0:DMIC1
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'AIF1_CAP Mixer SLIM TX3':1:0
+		'SLIM_0_RX AANC MUX':0:ZERO
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'SLIM TX3 MUX':0:ZERO
+		'DEC2 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	104:2
 	EffectsMixerCTL "SRS TruMedia"
 
 EndSection
@@ -5677,16 +5822,16 @@ SectionDevice
 		'RX2 MIX1 INP1':0:RX2
 		'CLASS_H_DSM MUX':0:RX_HPHL
 		'HPHL DAC Switch':1:1
-		'HPHL Volume':1:100
-		'HPHR Volume':1:100
+		'HPHL Volume':1:60
+		'HPHR Volume':1:60
 		'RX1 Digital Volume':1:68
 		'RX2 Digital Volume':1:68
 		'ANC Slot':1:0
-		'ANC1 MUX':0:ADC4
-		'ANC2 MUX':0:ADC5
+		'ANC1 MUX':0:ADC5
+		'ANC2 MUX':0:ADC4
 		'ANC1 FB MUX':0:EAR_HPH_L
-		'ADC5 Volume':1:65
-		'ADC4 Volume':1:65
+		'ADC5 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -5766,16 +5911,16 @@ SectionDevice
 		'RX2 MIX1 INP1':0:RX2
 		'CLASS_H_DSM MUX':0:RX_HPHL
 		'HPHL DAC Switch':1:1
-		'HPHL Volume':1:100
-		'HPHR Volume':1:100
+		'HPHL Volume':1:60
+		'HPHR Volume':1:60
 		'RX1 Digital Volume':1:68
 		'RX2 Digital Volume':1:68
 		'ANC Slot':1:0
 		'ANC1 FB MUX':0:EAR_HPH_L
-		'ANC1 MUX':0:ADC4
-		'ANC2 MUX':0:ADC5
-		'ADC5 Volume':1:65
-		'ADC4 Volume':1:65
+		'ANC1 MUX':0:ADC5
+		'ANC2 MUX':0:ADC4
+		'ADC5 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -5812,16 +5957,16 @@ SectionDevice
 		'RX2 MIX1 INP1':0:RX2
 		'CLASS_H_DSM MUX':0:RX_HPHL
 		'HPHL DAC Switch':1:1
-		'HPHL Volume':1:100
-		'HPHR Volume':1:100
+		'HPHL Volume':1:60
+		'HPHR Volume':1:60
 		'RX1 Digital Volume':1:68
 		'RX2 Digital Volume':1:68
 		'ANC Slot':1:1
-		'ANC1 MUX':0:ADC4
-		'ANC2 MUX':0:ADC5
+		'ANC1 MUX':0:ADC5
+		'ANC2 MUX':0:ADC4
 		'ANC1 FB MUX':0:EAR_HPH_L
-		'ADC5 Volume':1:65
-		'ADC4 Volume':1:65
+		'ADC5 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -5999,16 +6144,16 @@ SectionDevice
 		'RX2 MIX1 INP1':0:RX2
 		'CLASS_H_DSM MUX':0:RX_HPHL
 		'HPHL DAC Switch':1:1
-		'HPHL Volume':1:100
-		'HPHR Volume':1:100
+		'HPHL Volume':1:60
+		'HPHR Volume':1:60
 		'RX1 Digital Volume':1:68
 		'RX2 Digital Volume':1:68
 		'ANC Slot':1:0
 		'ANC1 FB MUX':0:EAR_HPH_L
-		'ANC1 MUX':0:ADC4
-		'ANC2 MUX':0:ADC5
-		'ADC5 Volume':1:65
-		'ADC4 Volume':1:65
+		'ANC1 MUX':0:ADC5
+		'ANC2 MUX':0:ADC4
+		'ADC5 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -6046,16 +6191,16 @@ SectionDevice
 		'CLASS_H_DSM MUX':0:RX_HPHL
 		'HPHL DAC Switch':1:1
 		'HPHR DAC Switch':1:1
-		'HPHL Volume':1:100
-		'HPHR Volume':1:100
+		'HPHL Volume':1:60
+		'HPHR Volume':1:60
 		'RX1 Digital Volume':1:68
 		'RX2 Digital Volume':1:68
 		'ANC Slot':1:0
-		'ANC1 MUX':0:ADC4
-		'ANC2 MUX':0:ADC5
+		'ANC1 MUX':0:ADC5
+		'ANC2 MUX':0:ADC4
 		'ANC1 FB MUX':0:EAR_HPH_L
-		'ADC5 Volume':1:65
-		'ADC4 Volume':1:65
+		'ADC5 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -6092,16 +6237,16 @@ SectionDevice
 		'CLASS_H_DSM MUX':0:RX_HPHL
 		'HPHL DAC Switch':1:1
 		'HPHR DAC Switch':1:1
-		'HPHL Volume':1:100
-		'HPHR Volume':1:100
+		'HPHL Volume':1:60
+		'HPHR Volume':1:60
 		'RX1 Digital Volume':1:68
 		'RX2 Digital Volume':1:68
 		'ANC Slot':1:1
-		'ANC1 MUX':0:ADC4
-		'ANC2 MUX':0:ADC5
+		'ANC1 MUX':0:ADC5
+		'ANC2 MUX':0:ADC4
 		'ANC1 FB MUX':0:EAR_HPH_L
-		'ADC5 Volume':1:65
-		'ADC4 Volume':1:65
+		'ADC5 Volume':1:40
+		'ADC4 Volume':1:40
 	EndSequence
 
 	DisableSequence
@@ -6149,6 +6294,554 @@ SectionDevice
 	ACDBID	15:1
 	EffectsMixerCTL "SRS TruMedia"
 	EC_REF_RXMixerCTL "SLIM_RX"
+
+EndSection
+
+SectionDevice
+	Name "DMIC Broadside Fluence Off"
+	Comment "Dual MIC Broadside Tx device, Fluence off"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	12:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "DMIC Endfire Fluence off"
+	Comment "Dual MIC Endfire Tx device, Fluence off"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	13:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "VoiceRecog DualMic Fluence BS NS"
+	Comment "Dual MIC Broadside Tx device, Fluence NS"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	12:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "VoiceRecog DualMic Fluence EF NS"
+	Comment "Dual MIC Endfire Tx device, Fluence NS"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	110:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Voice Recognition"
+	Comment "Handset Tx device for voice recognition"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	4:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Voice Recognition NS"
+	Comment "Handset Tx device for voice recognition, NS effect"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID  107:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Headset Mic NS"
+	Comment "Headset Tx device, with NS effect"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	107:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Handset Mic AEC"
+	Comment "Handset Tx device, with AEC"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+	ACDBID	106:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Handset Mic NS"
+	Comment "Handset Tx device, with NS"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	107:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Handset Mic AEC NS"
+	Comment "Handset Tx device, with AEC and NS"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID  108:2
+	EffectsMixerCTL "SRS TruMedia"
+EndSection
+
+SectionDevice
+	Name "VoiceComm DualMic Fluence BS AEC"
+	Comment "Dual MIC Broadside Tx device, Fluence AEC"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+                'AIF1_CAP Mixer SLIM TX2':1:0
+                'SLIM TX1 MUX':0:ZERO
+                'DEC3 MUX':0:ZERO
+                'SLIM TX2 MUX':0:ZERO
+                'DEC1 MUX':0:ZERO
+                'IIR1 INP1 MUX':0:ZERO
+        EndSequence
+
+        ACDBID  4:2
+        EffectsMixerCTL "SRS TruMedia"
+EndSection
+
+SectionDevice
+	Name "VoiceComm DualMic Fluence EF AEC"
+	Comment "Dual MIC Endfire Tx device, Fluence NS"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID  109:2
+	EffectsMixerCTL "SRS TruMedia"
+EndSection
+
+SectionDevice
+	Name "VoiceComm DualMic Fluence BS NS"
+	Comment "Dual MIC Broadside Tx device, Fluence NS"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID  110:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "VoiceComm DualMic Fluence EF NS"
+	Comment "Dual MIC Endfire Tx device, Fluence NS"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID  110:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "VoiceComm DualMic Fluence BS AEC NS"
+	Comment "Dual MIC Broadside Tx device, Fluence AEC NS"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID  4:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "VoiceRecog DualMic Fluence EF AEC NS"
+	Comment "Dual MIC Endfire Tx device, Fluence NS"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'AIF1_CAP Mixer SLIM TX2':1:1
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'SLIM TX2 MUX':0:DEC1
+		'DEC1 MUX':0:DMIC2
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'AIF1_CAP Mixer SLIM TX2':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'SLIM TX2 MUX':0:ZERO
+		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID  111:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Line AEC"
+	Comment "Speaker Tx device with AEC"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'SLIM_0_TX Channels':0:One
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	106:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Line NS"
+	Comment "Speaker Tx device with NS"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'SLIM_0_TX Channels':0:One
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	107:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Line AEC NS"
+	Comment "Speaker Tx device with AEC and NS"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:1
+		'SLIM_0_TX Channels':0:One
+		'SLIM TX1 MUX':0:DEC3
+		'DEC3 MUX':0:DMIC3
+		'IIR1 INP1 MUX':0:DEC3
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX1':1:0
+		'SLIM TX1 MUX':0:ZERO
+		'DEC3 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	108:2
+	EffectsMixerCTL "SRS TruMedia"
 
 EndSection
 
@@ -9756,4 +10449,67 @@ SectionModifier
 
 EndSection
 
+SectionModifier
+	Name "Capture Music CompressedBT SCO Tx"
+
+	EnableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:1
+	EndSequence
+
+	DisableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:0
+	EndSequence
+
+	# ALSA PCMs
+	CapturePCM 9
+
+EndSection
+
+SectionModifier
+	Name "Capture Music CompressedBT SCO WB Tx"
+
+	EnableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:1
+	EndSequence
+
+	DisableSequence
+		'MultiMedia4 Mixer INTERNAL_BT_SCO_TX':1:0
+	EndSequence
+
+	# ALSA PCMs
+	CapturePCM 9
+
+EndSection
+
+SectionModifier
+        Name "Capture Music CompressedPROXY Tx"
+
+        EnableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:1
+        EndSequence
+
+        DisableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:0
+        EndSequence
+
+        # ALSA PCMs
+        CapturePCM 9
+
+EndSection
+
+SectionModifier
+        Name "Capture Music CompressedUSB PROXY Tx"
+
+        EnableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:1
+        EndSequence
+
+        DisableSequence
+                'MultiMedia4 Mixer AFE_PCM_TX':1:0
+        EndSequence
+
+        # ALSA PCMs
+        CapturePCM 9
+
+EndSection
 # End of master file
