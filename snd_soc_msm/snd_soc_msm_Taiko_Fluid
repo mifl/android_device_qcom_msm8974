@@ -213,6 +213,23 @@ SectionVerb
 EndSection
 
 SectionVerb
+        Name "HiFiBT_A2DP PROXY Rx"
+
+        EnableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia1':1:1
+        EndSequence
+
+        DisableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia1':1:0
+        EndSequence
+
+        # ALSA PCMs
+        CapturePCM 0
+        PlaybackPCM 0
+
+EndSection
+
+SectionVerb
         Name "HiFiUSB PROXY Rx"
 
         EnableSequence
@@ -704,6 +721,23 @@ SectionVerb
 EndSection
 
 SectionVerb
+        Name "HiFi2BT_A2DP PROXY Rx"
+
+        EnableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia2':1:1
+        EndSequence
+
+        DisableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia2':1:0
+        EndSequence
+
+        # ALSA PCMs
+        CapturePCM 1
+        PlaybackPCM 1
+
+EndSection
+
+SectionVerb
 	Name "HiFi2SPDIF"
 
 	EnableSequence
@@ -1144,6 +1178,23 @@ SectionVerb
 EndSection
 
 SectionVerb
+        Name "HiFi3BT_A2DP PROXY Rx"
+
+        EnableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia5':1:1
+        EndSequence
+
+        DisableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia5':1:0
+        EndSequence
+
+        # ALSA PCMs
+        CapturePCM 14
+        PlaybackPCM 14
+
+EndSection
+
+SectionVerb
 	Name "HiFi3SPDIF"
 
 	EnableSequence
@@ -1562,6 +1613,23 @@ SectionVerb
 EndSection
 
 SectionVerb
+        Name "HiFi Low PowerBT_A2DP PROXY Rx"
+
+        EnableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia3':1:1
+        EndSequence
+
+        DisableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia3':1:0
+        EndSequence
+
+        # ALSA PCMs
+        CapturePCM 0
+        PlaybackPCM 4
+
+EndSection
+
+SectionVerb
         Name "HiFi Low PowerUSB PROXY Rx"
 
         EnableSequence
@@ -1753,6 +1821,21 @@ SectionVerb
 EndSection
 
 SectionVerb
+        Name "HiFi RecBT_A2DP PROXY Rx"
+
+        EnableSequence
+        EndSequence
+
+        DisableSequence
+        EndSequence
+
+        # ALSA PCMs
+        CapturePCM 0
+        PlaybackPCM 0
+
+EndSection
+
+SectionVerb
         Name "HiFi RecUSB PROXY Rx"
 
         EnableSequence
@@ -1873,6 +1956,21 @@ EndSection
 
 SectionVerb
         Name "HiFi Rec2PROXY Rx"
+
+        EnableSequence
+        EndSequence
+
+        DisableSequence
+        EndSequence
+
+        # ALSA PCMs
+        CapturePCM 1
+        PlaybackPCM 1
+
+EndSection
+
+SectionVerb
+        Name "HiFi Rec2BT_A2DP PROXY Rx"
 
         EnableSequence
         EndSequence
@@ -2197,6 +2295,23 @@ SectionVerb
         CapturePCM 13
 
 EndSection
+
+SectionVerb
+        Name "Voice2 CallBT_A2DP PROXY Rx"
+
+        EnableSequence
+        EndSequence
+
+        DisableSequence
+                'AFE_PCM_RX_Voice Mixer Voice2':1:0
+                'Voice2_Tx Mixer AFE_PCM_TX_Voice2':1:0
+        EndSequence
+
+        # ALSA PCMs
+        PlaybackPCM 13
+        CapturePCM 13
+
+EndSection
 }
 SectionUseCase."Voice Call" {
 Comment "Voice Call use case"
@@ -2327,6 +2442,23 @@ EndSection
 
 SectionVerb
 	Name "Voice CallPROXY Rx"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+		'AFE_PCM_RX_Voice Mixer CSVoice':1:0
+		'Voice_Tx Mixer AFE_PCM_TX_Voice':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 2
+	CapturePCM 2
+
+EndSection
+
+SectionVerb
+	Name "Voice CallBT_A2DP PROXY Rx"
 
 	EnableSequence
 	EndSequence
@@ -2663,6 +2795,26 @@ SectionVerb
 EndSection
 
 SectionVerb
+	Name "FM Digital RadioBT_A2DP PROXY Rx"
+
+	EnableSequence
+		'Internal FM RX Volume':1:0
+		'AFE_PCM_RX Port Mixer INTERNAL_FM_TX':1:1
+		'PCM_RX_DL_HL Switch':1:1
+	EndSequence
+
+	DisableSequence
+		'AFE_PCM_RX Port Mixer INTERNAL_FM_TX':1:0
+		'PCM_RX_DL_HL Switch':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 5
+	CapturePCM 6
+
+EndSection
+
+SectionVerb
 	Name "FM Digital RadioUSB PROXY Rx"
 
 	EnableSequence
@@ -2955,6 +3107,22 @@ SectionVerb
         EndSequence
 
         DisableSequence
+        EndSequence
+
+        # ALSA PCMs
+        PlaybackPCM 9
+
+EndSection
+
+SectionVerb
+        Name "HiFi TunnelBT_A2DP PROXY Rx"
+
+        EnableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia4':1:1
+        EndSequence
+
+        DisableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia4':1:0
         EndSequence
 
         # ALSA PCMs
@@ -3427,6 +3595,22 @@ SectionVerb
 EndSection
 
 SectionVerb
+        Name "HiFi Tunnel2BT_A2DP PROXY Rx"
+
+        EnableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia6':1:1
+        EndSequence
+
+        DisableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia6':1:0
+        EndSequence
+
+        # ALSA PCMs
+        PlaybackPCM 17
+
+EndSection
+
+SectionVerb
         Name "HiFi Tunnel2USB PROXY Rx"
 
         EnableSequence
@@ -3883,6 +4067,22 @@ SectionVerb
         EndSequence
 
         DisableSequence
+        EndSequence
+
+        # ALSA PCMs
+        PlaybackPCM 18
+
+EndSection
+
+SectionVerb
+        Name "HiFi Tunnel3BT_A2DP PROXY Rx"
+
+        EnableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia7':1:1
+        EndSequence
+
+        DisableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia7':1:0
         EndSequence
 
         # ALSA PCMs
@@ -4353,6 +4553,23 @@ SectionVerb
         PlaybackPCM 19
 
 EndSection
+
+SectionVerb
+        Name "HiFi Tunnel4BT_A2DP PROXY Rx"
+
+        EnableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia8':1:1
+        EndSequence
+
+        DisableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia8':1:0
+        EndSequence
+
+        # ALSA PCMs
+        PlaybackPCM 19
+
+EndSection
+
 
 SectionVerb
         Name "HiFi Tunnel4USB PROXY Rx"
@@ -4971,6 +5188,22 @@ EndSection
 
 SectionVerb
         Name "HiFi LowlatencyPROXY Rx"
+
+        EnableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia5':1:1
+        EndSequence
+
+        DisableSequence
+                'AFE_PCM_RX Audio Mixer MultiMedia5':1:0
+        EndSequence
+
+        # ALSA PCMs
+        PlaybackPCM 15
+
+EndSection
+
+SectionVerb
+        Name "HiFi LowlatencyBT_A2DP PROXY Rx"
 
         EnableSequence
                 'AFE_PCM_RX Audio Mixer MultiMedia5':1:1
@@ -6662,6 +6895,21 @@ SectionDevice
 EndSection
 
 SectionDevice
+	Name "BT_A2DP PROXY Rx"
+	Comment "BT_A2DP PROXY Rx device"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+	EndSequence
+
+	ACDBID	20:1
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
 	Name "USB PROXY Rx"
 	Comment "USB PROXY Rx device"
 
@@ -8043,6 +8291,23 @@ SectionModifier
 EndSection
 
 SectionModifier
+	Name "Play MusicBT_A2DP PROXY Rx"
+
+	EnableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia1':1:1
+	EndSequence
+
+	DisableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia1':1:0
+	EndSequence
+
+	# ALSA PCMs
+	CapturePCM 0
+	PlaybackPCM 0
+
+EndSection
+
+SectionModifier
 	Name "Play MusicUSB PROXY Rx"
 
 	EnableSequence
@@ -8225,6 +8490,23 @@ SectionModifier
 EndSection
 
 SectionModifier
+	Name "Play Music2BT_A2DP PROXY Rx"
+
+	EnableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia2':1:1
+	EndSequence
+
+	DisableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia2':1:0
+	EndSequence
+
+	# ALSA PCMs
+	CapturePCM 1
+	PlaybackPCM 1
+
+EndSection
+
+SectionModifier
 	Name "Play FM"
 
 	EnableSequence
@@ -8263,6 +8545,27 @@ SectionModifier
 	CapturePCM 6
 
 EndSection
+
+SectionModifier
+	Name "Play FMBT_A2DP PROXY Rx"
+
+	EnableSequence
+		'Internal FM RX Volume':1:0
+		'AFE_PCM_RX Port Mixer INTERNAL_FM_TX':1:1
+		'PCM_RX_DL_HL Switch':1:1
+	EndSequence
+
+	DisableSequence
+		'AFE_PCM_RX Port Mixer INTERNAL_FM_TX':1:0
+		'PCM_RX_DL_HL Switch':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 5
+	CapturePCM 6
+
+EndSection
+
 
 SectionModifier
 	Name "Play FMUSB PROXY Rx"
@@ -8432,6 +8735,23 @@ SectionModifier
 	PlaybackPCM 4
 
 EndSection
+
+SectionModifier
+	Name "Play LPABT_A2DP PROXY Rx"
+
+	EnableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia3':1:1
+	EndSequence
+
+	DisableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia3':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 4
+
+EndSection
+
 
 SectionModifier
 	Name "Play LPAUSB PROXY Rx"
@@ -8954,6 +9274,22 @@ SectionModifier
 EndSection
 
 SectionModifier
+        Name "Play TunnelBT_A2DP PROXY Rx"
+
+        EnableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia4':1:1
+        EndSequence
+
+        DisableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia4':1:0
+        EndSequence
+
+        # ALSA PCMs
+        PlaybackPCM 9
+
+EndSection
+
+SectionModifier
         Name "Play TunnelUSB PROXY Rx"
 
         EnableSequence
@@ -9376,6 +9712,22 @@ EndSection
 
 SectionModifier
         Name "Play Tunnel2PROXY Rx"
+
+        EnableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia6':1:1
+        EndSequence
+
+        DisableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia6':1:0
+        EndSequence
+
+        # ALSA PCMs
+        PlaybackPCM 17
+
+EndSection
+
+SectionModifier
+        Name "Play Tunnel2BT_A2DP PROXY Rx"
 
         EnableSequence
 		'AFE_PCM_RX Audio Mixer MultiMedia6':1:1
@@ -9828,6 +10180,22 @@ SectionModifier
 EndSection
 
 SectionModifier
+        Name "Play Tunnel3BT_A2DP PROXY Rx"
+
+        EnableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia7':1:1
+        EndSequence
+
+        DisableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia7':1:0
+        EndSequence
+
+        # ALSA PCMs
+        PlaybackPCM 18
+
+EndSection
+
+SectionModifier
         Name "Play Tunnel3USB PROXY Rx"
 
         EnableSequence
@@ -10263,6 +10631,23 @@ SectionModifier
         PlaybackPCM 19
 
 EndSection
+
+SectionModifier
+        Name "Play Tunnel4BT_A2DP PROXY Rx"
+
+        EnableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia8':1:1
+        EndSequence
+
+        DisableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia8':1:0
+        EndSequence
+
+        # ALSA PCMs
+        PlaybackPCM 19
+
+EndSection
+
 
 SectionModifier
         Name "Play Tunnel4USB PROXY Rx"
@@ -10883,6 +11268,23 @@ SectionModifier
 EndSection
 
 SectionModifier
+	Name "Play VoiceBT_A2DP PROXY Rx"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+		'AFE_PCM_RX_Voice Mixer CSVoice':1:0
+		'Voice_Tx Mixer AFE_PCM_TX_Voice':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 2
+	CapturePCM 2
+
+EndSection
+
+SectionModifier
 	Name "Play VoiceUSB PROXY Rx"
 
 	EnableSequence
@@ -10949,6 +11351,24 @@ SectionModifier
 	CapturePCM 2
 
 EndSection
+
+SectionModifier
+	Name "Play VOIPBT_A2DP PROXY Rx"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+		'AFE_PCM_RX_Voice Mixer Voip':1:0
+		'Voip_Tx Mixer AFE_PCM_TX_Voip':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 2
+	CapturePCM 2
+
+EndSection
+
 
 SectionModifier
 	Name "Play VOIPUSB PROXY Rx"
@@ -11093,6 +11513,21 @@ EndSection
 
 SectionModifier
 	Name "Capture MusicPROXY Rx"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+	EndSequence
+
+	# ALSA PCMs
+	CapturePCM 0
+	PlaybackPCM 0
+
+EndSection
+
+SectionModifier
+	Name "Capture MusicBT_A2DP PROXY Rx"
 
 	EnableSequence
 	EndSequence
@@ -11352,6 +11787,21 @@ SectionModifier
 
         DisableSequence
                 'MultiMedia2 Mixer AFE_PCM_TX':1:0
+        EndSequence
+
+        # ALSA PCMs
+        CapturePCM 1
+        PlaybackPCM 1
+
+EndSection
+
+SectionModifier
+        Name "Capture Music2BT_A2DP PROXY Rx"
+
+        EnableSequence
+        EndSequence
+
+        DisableSequence
         EndSequence
 
         # ALSA PCMs
@@ -11809,6 +12259,23 @@ SectionModifier
         # ALSA PCMs
         CapturePCM 14
         PlaybackPCM 14
+
+EndSection
+
+SectionModifier
+	Name "Play Music3BT_A2DP PROXY Rx"
+
+	EnableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia5':1:1
+	EndSequence
+
+	DisableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia5':1:0
+	EndSequence
+
+	# ALSA PCMs
+	CapturePCM 14
+	PlaybackPCM 14
 
 EndSection
 
