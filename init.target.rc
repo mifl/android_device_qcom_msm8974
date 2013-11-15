@@ -53,7 +53,6 @@ on fs
 
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
-    write /sys/kernel/boot_adsp/boot 1
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
@@ -99,8 +98,8 @@ service qgesturesvr /system/bin/mm-gesture-daemon
 #start GNSS/Sensor interface daemon
 service gsiff_daemon /system/bin/gsiff_daemon
     class late_start
-    user system
-    group gps net_raw
+    user gps
+    group gps net_raw misc
 
 service qrngd /system/bin/qrngd -f
    class main
@@ -133,6 +132,10 @@ service security-check1 /sbin/security_boot_check system
 service security-check2 /sbin/security_boot_check recovery
     class core
     oneshot
+
+#Start the qcom-system-daemon service
+service qcomsysd /system/bin/qcom-system-daemon
+   class main
 
 service time_daemon /system/bin/time_daemon
    class late_start
