@@ -6,8 +6,8 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 #TARGET_ENABLE_DEFAULT_SMOOTHSTREAMING := true
 endif #TARGET_USES_QCOM_BSP
 
-TARGET_DISABLE_DASH := true
-TARGET_DISABLE_OMX_SECURE_TEST_APP := true
+#TARGET_DISABLE_DASH := true
+#TARGET_DISABLE_OMX_SECURE_TEST_APP := true
 
 # media_profiles and media_codecs xmls for 8974
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
@@ -25,9 +25,13 @@ PRODUCT_BOOT_JARS += qcmediaplayer:WfdCommon:oem-services:qcom.fmradio:org.codea
 # Audio configuration file
 PRODUCT_COPY_FILES += \
     device/qcom/msm8974/audio_policy.conf:system/etc/audio_policy.conf \
+    device/qcom/msm8974/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     device/qcom/msm8974/mixer_paths.xml:system/etc/mixer_paths.xml \
     device/qcom/msm8974/mixer_paths_auxpcm.xml:system/etc/mixer_paths_auxpcm.xml
 
+PRODUCT_PACKAGES += \
+    libqcomvisualizer \
+    libqcomvoiceprocessing
 
 # Feature definition files for 8974
 PRODUCT_COPY_FILES += \
