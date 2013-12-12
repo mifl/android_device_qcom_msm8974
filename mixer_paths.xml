@@ -193,6 +193,13 @@
     <ctl name="Voice2_Tx Mixer AFE_PCM_TX_Voice2" value="0" />
     <!-- Voice2 End-->
 
+    <!-- QCHAT -->
+    <ctl name="SLIM_0_RX_Voice Mixer QCHAT" value="0" />
+    <ctl name="QCHAT_Tx Mixer SLIM_0_TX_QCHAT" value="0" />
+    <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer QCHAT" value="0" />
+    <ctl name="QCHAT_Tx Mixer INTERNAL_BT_SCO_TX_QCHAT" value="0" />
+    <!-- QCHAT End -->
+
     <!-- anc headset -->
     <!-- speaker anc combo -->
     <ctl name="RX4 DSM MUX" value="CIC_OUT" />
@@ -250,6 +257,8 @@
     <ctl name="MultiMedia8 Mixer SLIM_0_TX" value="0" />
     <ctl name="MultiMedia8 Mixer INTERNAL_BT_SCO_TX" value="0" />
     <ctl name="MultiMedia8 Mixer AFE_PCM_TX" value="0" />
+    <ctl name="MultiMedia8 Mixer VOC_REC_UL" value="0" />
+    <ctl name="MultiMedia8 Mixer VOC_REC_DL" value="0" />
     <!-- audio record compress end-->
     <!-- listen -->
     <ctl name="LSM1 MUX" value="None" />
@@ -274,6 +283,11 @@
 
     <path name="deep-buffer-playback bt-sco">
         <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1" value="1" />
+    </path>
+
+    <path name="deep-buffer-playback bt-sco-wb">
+        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <path name="deep-buffer-playback bt-sco" />
     </path>
 
     <path name="deep-buffer-playback afe-proxy">
@@ -303,6 +317,11 @@
 
     <path name="low-latency-playback bt-sco">
         <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5" value="1" />
+    </path>
+
+    <path name="low-latency-playback bt-sco-wb">
+        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <path name="low-latency-playback bt-sco" />
     </path>
 
     <path name="low-latency-playback speaker-and-hdmi">
@@ -453,18 +472,79 @@
         <ctl name="SLIMBUS_DL_HL Switch" value="1" />
     </path>
 
-   <path name="incall-rec-uplink">
-       <ctl name="MultiMedia1 Mixer VOC_REC_UL" value="1" />
-   </path>
+    <path name="incall-rec-uplink">
+        <ctl name="MultiMedia1 Mixer VOC_REC_UL" value="1" />
+    </path>
 
-   <path name="incall-rec-downlink">
-       <ctl name="MultiMedia1 Mixer VOC_REC_DL" value="1" />
-   </path>
+    <path name="incall-rec-uplink bt-sco">
+        <path name="incall-rec-uplink" />
+    </path>
 
-   <path name="incall-rec-uplink-and-downlink">
-       <path name="incall-rec-uplink" />
-       <path name="incall-rec-downlink" />
-   </path>
+    <path name="incall-rec-uplink bt-sco-wb">
+        <path name="incall-rec-uplink" />
+    </path>
+
+    <path name="incall-rec-uplink-compress">
+        <ctl name="MultiMedia8 Mixer VOC_REC_UL" value="1" />
+    </path>
+
+    <path name="incall-rec-uplink-compress bt-sco">
+        <path name="incall-rec-uplink-compress" />
+    </path>
+
+    <path name="incall-rec-uplink-compress bt-sco-wb">
+        <path name="incall-rec-uplink-compress" />
+    </path>
+
+    <path name="incall-rec-downlink">
+        <ctl name="MultiMedia1 Mixer VOC_REC_DL" value="1" />
+    </path>
+
+    <path name="incall-rec-downlink bt-sco">
+        <path name="incall-rec-downlink" />
+    </path>
+
+    <path name="incall-rec-downlink bt-sco-wb">
+        <path name="incall-rec-downlink" />
+    </path>
+
+    <path name="incall-rec-downlink-compress">
+        <ctl name="MultiMedia8 Mixer VOC_REC_DL" value="1" />
+    </path>
+
+    <path name="incall-rec-downlink-compress bt-sco">
+        <path name="incall-rec-downlink-compress" />
+    </path>
+
+    <path name="incall-rec-downlink-compress bt-sco-wb">
+        <path name="incall-rec-downlink-compress" />
+    </path>
+
+    <path name="incall-rec-uplink-and-downlink">
+        <path name="incall-rec-uplink" />
+        <path name="incall-rec-downlink" />
+    </path>
+
+    <path name="incall-rec-uplink-and-downlink bt-sco">
+        <path name="incall-rec-uplink-and-downlink" />
+    </path>
+
+    <path name="incall-rec-uplink-and-downlink bt-sco-wb">
+        <path name="incall-rec-uplink-and-downlink" />
+    </path>
+
+    <path name="incall-rec-uplink-and-downlink-compress">
+        <path name="incall-rec-uplink-compress" />
+        <path name="incall-rec-downlink-compress" />
+    </path>
+
+    <path name="incall-rec-uplink-and-downlink-compress bt-sco">
+        <path name="incall-rec-uplink-and-downlink-compress" />
+    </path>
+
+    <path name="incall-rec-uplink-and-downlink-compress bt-sco-wb">
+        <path name="incall-rec-uplink-and-downlink-compress" />
+    </path>
 
     <path name="volte-call">
         <ctl name="SLIM_0_RX_Voice Mixer VoLTE" value="1" />
@@ -517,6 +597,21 @@
     <path name="listen-low-power">
         <ctl name="LSM1 MUX" value="SLIMBUS_5_TX" />
         <ctl name="SLIMBUS_5_TX LSM Function" value="AUDIO" />
+    </path>
+
+    <path name="qchat-call">
+        <ctl name="SLIM_0_RX_Voice Mixer QCHAT" value="1" />
+        <ctl name="QCHAT_Tx Mixer SLIM_0_TX_QCHAT" value="1" />
+    </path>
+
+    <path name="qchat-call bt-sco">
+        <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer QCHAT" value="1" />
+        <ctl name="QCHAT_Tx Mixer INTERNAL_BT_SCO_TX_QCHAT" value="1" />
+    </path>
+
+    <path name="qchat-call bt-sco-wb">
+        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <path name="qchat-call bt-sco" />
     </path>
 
     <!-- These are actual sound device specific mixer settings -->
@@ -937,7 +1032,7 @@
 
     <path name="dmic-endfire">
         <path name="speaker-dmic-endfire" />
-        <ctl name="IIR1 INP1 MUX" value="DEC6" />
+        <ctl name="IIR1 INP1 MUX" value="DEC7" />
     </path>
 
     <path name="dmic-endfire-liquid">
