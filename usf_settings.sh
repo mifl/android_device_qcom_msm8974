@@ -35,7 +35,9 @@ t_dir=$dir0/tester
 e_dir=$dir0/epos
 p2p_dir=$dir0/p2p
 prox_dir=$dir0/proximity
+pairing_dir=$dir0/pairing
 ucm_dir=$dir0/ucm
+mixer_dir=/persist/usf/mixer
 
 trigger_file=$dir0/form_factor.cfg
 
@@ -66,6 +68,7 @@ if [ ! -e $trigger_file ]; then
    ln -s $p2p_dir/cfg_"$type" $p2p_dir/cfg
    ln -s $g_dir/cfg_"$type" $g_dir/cfg
    ln -s $prox_dir/cfg_"$type" $prox_dir/cfg
+   ln -s $pairing_dir/cfg_"$type" $pairing_dir/cfg
 
    ln -s $e_dir/cfg/usf_epos_"$type".cfg $e_dir/usf_epos.cfg
    ln -s $t_dir/cfg/usf_tester_epos_"$type".cfg $t_dir/usf_tester.cfg
@@ -73,9 +76,9 @@ if [ ! -e $trigger_file ]; then
    ln -s $p2p_dir/cfg/usf_p2p_"$type".cfg $p2p_dir/usf_p2p.cfg
    ln -s $g_dir/cfg/usf_gesture_"$type".cfg $g_dir/usf_gesture.cfg
    ln -s $prox_dir/cfg/usf_proximity_"$type".cfg $prox_dir/usf_proximity.cfg
+   ln -s $pairing_dir/cfg/usf_pairing_"$type".cfg $pairing_dir/usf_pairing.cfg
 
-   rm /system/etc/snd_soc_msm/us_soc_msm
-   ln -s $ucm_dir/us_soc_msm_"$type" /system/etc/snd_soc_msm/us_soc_msm
+   ln -s $mixer_dir/mixer_paths_"$type".xml $mixer_dir/mixer_paths.xml
 
    # The USF based calculators have system permissions
    chown system $dir0/*
