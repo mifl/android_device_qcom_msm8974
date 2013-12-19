@@ -12106,6 +12106,23 @@ SectionModifier
 EndSection
 
 SectionModifier
+	Name "Play Lowlatency MusicBT_A2DP PROXY Rx"
+
+	EnableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia5':1:1
+	EndSequence
+
+	DisableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia5':1:0
+	EndSequence
+
+	# ALSA PCMs
+	CapturePCM 15
+	PlaybackPCM 15
+
+EndSection
+
+SectionModifier
 	Name "Play Lowlatency MusicUSB PROXY Rx"
 
 	EnableSequence
