@@ -57,7 +57,6 @@ on fs
 
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
-    write /sys/kernel/boot_adsp/boot 1
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
@@ -236,7 +235,7 @@ on property:sys.ims.DATA_DAEMON_STATUS=1
 service ppd /system/bin/mm-pp-daemon
     class late_start
     user system
-    socket pps stream 0660 system system graphics
+    socket pps stream 0660 system system
     group system graphics
 
 on property:init.svc.surfaceflinger=stopped
