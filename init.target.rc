@@ -180,6 +180,7 @@ on property:init.svc.bootanim=stopped
 service imsqmidaemon /system/bin/imsqmidaemon
     class main
     user system
+    socket ims_qmid stream 0660 system radio
     group radio net_raw log qcom_diag
     disabled
 
@@ -191,7 +192,8 @@ on boot
 service imsdatadaemon /system/bin/imsdatadaemon
     class main
     user root
-    group radio net_raw log qcom_diag net_admin
+    socket ims_datad stream 0660 system radio
+    group system radio net_raw log qcom_diag net_admin
     disabled
 
 service wcnss-service /system/bin/wcnss_service
@@ -206,6 +208,7 @@ on property:sys.ims.QMI_DAEMON_STATUS=1
 service ims_rtp_daemon /system/bin/ims_rtp_daemon
    class main
    user system
+   socket ims_rtpd stream 0660 system radio
    group radio net_raw diag qcom_diag log
    disabled
 
