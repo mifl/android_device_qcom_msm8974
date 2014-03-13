@@ -79,6 +79,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.whitelist=/system/etc/whitelist_appops.xml
 
+# Camera configuration
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    camera.disable_zsl_mode=1
+
 PRODUCT_COPY_FILES += \
     device/qcom/msm8974/whitelist_appops.xml:system/etc/whitelist_appops.xml
 
