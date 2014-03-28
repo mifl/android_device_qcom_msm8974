@@ -32,6 +32,8 @@ on early-init
     symlink /data/tombstones /tombstones
 
 on init
+    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
+
     # Set the property to indicate type of virtual display to 0
     # 0 indicates that virtual display is not a Wifi display and that the
     # session is not exercised through RemoteDisplay in the android framework
