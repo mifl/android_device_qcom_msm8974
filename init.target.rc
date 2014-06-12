@@ -214,9 +214,9 @@ service imsdatadaemon /system/bin/imsdatadaemon
     disabled
 
 service wcnss-service /system/bin/wcnss_service
-    class late_start
+    class main
     user system
-    group system wifi
+    group system wifi radio
     oneshot
 
 on property:sys.ims.QMI_DAEMON_STATUS=1
