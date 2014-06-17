@@ -28,6 +28,7 @@
 #
 #
 
+clean_copy_dir=/system/etc/usf
 dir0=/data/usf
 h_dir=$dir0/hovering
 g_dir=$dir0/gesture
@@ -36,6 +37,7 @@ e_dir=$dir0/epos
 p2p_dir=$dir0/p2p
 prox_dir=$dir0/proximity
 pairing_dir=$dir0/pairing
+sw_calib_dir=$dir0/sw_calib
 ucm_dir=$dir0/ucm
 mixer_dir=/persist/usf/mixer
 epos_dir=/persist/usf/epos
@@ -62,6 +64,8 @@ if [ ! -e $trigger_file ]; then
        ;;
    esac
 
+   cp -r $clean_copy_dir $dir0
+
    ln -s $dir0/form_factor_"$type".cfg $dir0/form_factor.cfg
    ln -s $t_dir/cfg_"$type" $t_dir/cfg
    ln -s $e_dir/cfg_"$type" $e_dir/cfg
@@ -70,6 +74,7 @@ if [ ! -e $trigger_file ]; then
    ln -s $g_dir/cfg_"$type" $g_dir/cfg
    ln -s $prox_dir/cfg_"$type" $prox_dir/cfg
    ln -s $pairing_dir/cfg_"$type" $pairing_dir/cfg
+   ln -s $sw_calib_dir/cfg_"$type" $sw_calib_dir/cfg
 
    ln -s $e_dir/cfg/usf_epos_"$type".cfg $e_dir/usf_epos.cfg
    ln -s $t_dir/cfg/usf_tester_epos_"$type".cfg $t_dir/usf_tester.cfg
@@ -78,6 +83,7 @@ if [ ! -e $trigger_file ]; then
    ln -s $g_dir/cfg/usf_gesture_"$type".cfg $g_dir/usf_gesture.cfg
    ln -s $prox_dir/cfg/usf_proximity_"$type".cfg $prox_dir/usf_proximity.cfg
    ln -s $pairing_dir/cfg/usf_pairing_"$type".cfg $pairing_dir/usf_pairing.cfg
+   ln -s $sw_calib_dir/cfg/usf_sw_calib_"$type".cfg $sw_calib_dir/usf_sw_calib.cfg
 
    ln -s $e_dir/cfg/service_settings_"$type".xml $e_dir/service_settings.xml
 
@@ -87,6 +93,7 @@ if [ ! -e $trigger_file ]; then
    ln -s $epos_dir/unit_calib_"$type".dat $epos_dir/unit_calib.dat
 
    # The USF based calculators have system permissions
+   chown system $dir0
    chown system $dir0/*
    chown system $dir0/*/*
    chown system $dir0/*/*/*
