@@ -35,6 +35,10 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libqcompostprocbundle
 
+# Listen configuration file
+PRODUCT_COPY_FILES += \
+    device/qcom/msm8974/listen_platform_info.xml:system/etc/listen_platform_info.xml
+
 # Feature definition files for 8974
 PRODUCT_COPY_FILES += \
     system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf \
