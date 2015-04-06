@@ -38,7 +38,7 @@ p2p_dir=$dir0/p2p
 prox_dir=$dir0/proximity
 pairing_dir=$dir0/pairing
 ucm_dir=$dir0/ucm
-mixer_dir=/persist/usf/mixer
+mixer_dir=$dir0/mixer
 
 trigger_file=$dir0/form_factor.cfg
 
@@ -64,6 +64,12 @@ if [ ! -e $trigger_file ]; then
 
    cp -r $clean_copy_dir $dir0
 
+   # The USF based calculators have system permissions
+   chown system $dir0
+   chown system $dir0/*
+   chown system $dir0/*/*
+   chown system $dir0/*/*/*
+
    ln -s $dir0/form_factor_"$type".cfg $dir0/form_factor.cfg
    ln -s $t_dir/cfg_"$type" $t_dir/cfg
    ln -s $e_dir/cfg_"$type" $e_dir/cfg
@@ -82,12 +88,6 @@ if [ ! -e $trigger_file ]; then
    ln -s $pairing_dir/cfg/usf_pairing_"$type".cfg $pairing_dir/usf_pairing.cfg
 
    ln -s $mixer_dir/mixer_paths_"$type".xml $mixer_dir/mixer_paths.xml
-
-   # The USF based calculators have system permissions
-   chown system $dir0
-   chown system $dir0/*
-   chown system $dir0/*/*
-   chown system $dir0/*/*/*
 fi
 
 chown system /dev/usf1
