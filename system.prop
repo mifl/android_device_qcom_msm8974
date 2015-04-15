@@ -140,3 +140,9 @@ ro.hwui.text_large_cache_height=1024
 
 #disable dsp gapless mode by default
 audio.offload.gapless.enabled=false
+
+# set max background services
+ro.config.max_starting_bg=8
+
+#additional max allowed background services on bootup
+persist.added_boot_bgservices=4
