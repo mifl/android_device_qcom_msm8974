@@ -40,6 +40,7 @@ pairing_dir=$dir0/pairing
 ucm_dir=$dir0/ucm
 mixer_dir=/persist/usf/mixer
 epos_dir=/persist/usf/epos
+mixer_dir=$dir0/mixer
 
 trigger_file=$dir0/form_factor.cfg
 
@@ -65,6 +66,12 @@ if [ ! -e $trigger_file ]; then
 
    cp -r $clean_copy_dir $dir0
 
+   # The USF based calculators have system permissions
+   chown system $dir0
+   chown system $dir0/*
+   chown system $dir0/*/*
+   chown system $dir0/*/*/*
+
    ln -s $dir0/form_factor_"$type".cfg $dir0/form_factor.cfg
    ln -s $t_dir/cfg_"$type" $t_dir/cfg
    ln -s $e_dir/cfg_"$type" $e_dir/cfg
@@ -89,11 +96,6 @@ if [ ! -e $trigger_file ]; then
    ln -s $epos_dir/product_calib_"$type".dat $epos_dir/product_calib.dat
    ln -s $epos_dir/unit_calib_"$type".dat $epos_dir/unit_calib.dat
 
-   # The USF based calculators have system permissions
-   chown system $dir0
-   chown system $dir0/*
-   chown system $dir0/*/*
-   chown system $dir0/*/*/*
 fi
 
 chown system /dev/usf1
